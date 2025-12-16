@@ -1,14 +1,29 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
+import Logo from '../../../../../Components/Logo/Logo';
+import useAuth from '../../../../../hooks/useAuth';
 
 const Navbar = () => {
 
+
+
+  // for logout
+  const{user,logOut}= useAuth();
+  const handleLogOut=()=>{
+    logOut()
+    .then()
+    .catch(error=>{
+      console.log(error);
+    })
+  }
+
 const links =<>
 
-<li><NavLink>Home</NavLink></li>
-<li><NavLink>About Us</NavLink></li>
-<li><NavLink>Tutons</NavLink></li>
-<li><NavLink>Be a Tutor</NavLink></li>
+<li><NavLink to="">Home</NavLink></li>
+<li><NavLink>Service </NavLink></li>
+<li><NavLink>About Us </NavLink></li>
+<li><NavLink>Tutions </NavLink></li>
+<li><NavLink> Tutors </NavLink></li>
 
 </>
 
@@ -27,7 +42,9 @@ const links =<>
         {links}
       </ul>
     </div>
-   <Link to='/' className="btn btn-ghost text-xl">E-TutionBD</Link>
+   <Link to='/' className="btn btn-ghost text-xl">
+   <Logo></Logo>
+   </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -35,10 +52,20 @@ const links =<>
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Log in </a>
+    {
+
+   user ?
+   <a onClick={handleLogOut} className='btn'>Log Out</a>:
+ <Link className='btn btn-outline' to='/login'>Log in</Link>
+ }
   </div>
+    
+  <Link
+                    className='btn btn-primary text-black mx-4'
+                    to="/register">Register</Link>
 </div>
   );
 };
 
 export default Navbar;
+250

@@ -1,9 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&family=Urbanist:wght@100..900&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* DaisyUI Light Theme */
+[data-theme="light"] {
+  --primary: #191970;
+  --secondary: #6F8FAF;
+  --text: #ffffff;
+}
+
+
+/* Font setup */
 body {
-  font-family: "Josefin Sans";
+  font-family: "Josefin Sans", "Urbanist", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary);
 }

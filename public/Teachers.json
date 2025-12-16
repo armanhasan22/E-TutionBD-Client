@@ -1,0 +1,67 @@
+[
+  {
+    "id": "5f47ac10b4f1c03e8c890101",
+    "email": "rashid.khan@example.com",
+    "name": "Rashid Khan",
+    "subject": "Mathematics",
+    "phone": "+8801712345678",
+    "address": "Dhaka, Bangladesh",
+    "ratings": 4.9,
+    "review": "Explains concepts very clearly and patiently.",
+    "teacher_id": "TCHR-BD001",
+    "profile_photoURL": "https://randomuser.me/api/portraits/men/1.jpg",
+    "joining_date": "2022-03-15T09:00:00.000Z"
+  },
+  {
+    "id": "5f47ac10b4f1c03e8c890102",
+    "email": "fatema.akhtar@example.com",
+    "name": "Fatema Akhtar",
+    "subject": "English",
+    "phone": "+8801712345679",
+    "address": "Chittagong, Bangladesh",
+    "ratings": 4.7,
+    "review": "Very supportive and encourages students to participate.",
+    "teacher_id": "TCHR-BD002",
+    "profile_photoURL": "https://randomuser.me/api/portraits/women/2.jpg",
+    "joining_date": "2023-01-10T10:00:00.000Z"
+  },
+  {
+    "id": "5f47ac10b4f1c03e8c890103",
+    "email": "kamal.hossain@example.com",
+    "name": "Kamal Hossain",
+    "subject": "Physics",
+    "phone": "+8801712345680",
+    "address": "Sylhet, Bangladesh",
+    "ratings": 4.8,
+    "review": "Makes difficult topics easy to understand.",
+    "teacher_id": "TCHR-BD003",
+    "profile_photoURL": "https://randomuser.me/api/portraits/men/3.jpg",
+    "joining_date": "2021-06-20T08:30:00.000Z"
+  },
+  {
+    "id": "5f47ac10b4f1c03e8c890104",
+    "email": "nashita.rahat@example.com",
+    "name": "Nashita Rahat",
+    "subject": "Biology",
+    "phone": "+8801712345681",
+    "address": "Khulna, Bangladesh",
+    "ratings": 4.6,
+    "review": "Patient and provides practical examples in teaching.",
+    "teacher_id": "TCHR-BD004",
+    "profile_photoURL": "https://randomuser.me/api/portraits/women/4.jpg",
+    "joining_date": "2022-09-05T11:00:00.000Z"
+  },
+  {
+    "id": "5f47ac10b4f1c03e8c890105",
+    "email": "farid.mia@example.com",
+    "name": "Farid Mia",
+    "subject": "Chemistry",
+    "phone": "+8801712345682",
+    "address": "Rajshahi, Bangladesh",
+    "ratings": 4.9,
+    "review": "Very interactive classes and easy to approach.",
+    "teacher_id": "TCHR-BD005",
+    "profile_photoURL": "https://randomuser.me/api/portraits/men/5.jpg",
+    "joining_date": "2021-11-12T09:45:00.000Z"
+  }
+]
