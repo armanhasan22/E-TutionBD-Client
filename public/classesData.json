@@ -1,0 +1,29 @@
+[
+  {
+    "className": "Class 6",
+    "subjects": ["Mathematics", "English", "Bangla", "General Science"]
+  },
+  {
+    "className": "Class 7",
+    "subjects": ["Mathematics", "English", "Bangla", "General Science"]
+  },
+  {
+    "className": "Class 8",
+    "subjects": ["Mathematics", "English", "Bangla", "General Science", "ICT"]
+  },
+  {
+    "className": "Class 9",
+    "group": "Science",
+    "subjects": ["Mathematics", "Physics", "Chemistry", "Biology", "ICT"]
+  },
+  {
+    "className": "Class 9",
+    "group": "Commerce",
+    "subjects": ["Accounting", "Finance", "Economics", "English"]
+  },
+  {
+    "className": "Class 10",
+    "group": "Science",
+    "subjects": ["Mathematics", "Physics", "Chemistry", "Biology","Higher-Math"]
+  }
+]

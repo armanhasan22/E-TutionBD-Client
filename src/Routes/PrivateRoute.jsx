@@ -13,7 +13,8 @@ if(loading){
     </div>
 }
 if(!user){
-    return <Navigate state ={location.pathname} to='/login'></Navigate>
+    // return <Navigate state ={location.pathname} to='/login'></Navigate>
+      return <Navigate to="/login" state={{ from: location }} replace />;
 }
 
 

@@ -21,9 +21,17 @@ const links =<>
 
 <li><NavLink to="">Home</NavLink></li>
 <li><NavLink>Service </NavLink></li>
-<li><NavLink>About Us </NavLink></li>
-<li><NavLink>Tutions </NavLink></li>
+<li><NavLink to='current-tutions'>Current Tuitions </NavLink></li>
+<li><NavLink to='/browseTutions'>Tutions </NavLink></li>
 <li><NavLink> Tutors </NavLink></li>
+
+
+{
+  user && <>
+<li><NavLink to='/dashboard/my-tutions'> My Tutions </NavLink></li>
+
+  </>
+}
 
 </>
 
