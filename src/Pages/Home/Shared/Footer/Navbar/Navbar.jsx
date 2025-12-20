@@ -23,13 +23,13 @@ const links =<>
 <li><NavLink>Service </NavLink></li>
 <li><NavLink to='current-tutions'>Current Tuitions </NavLink></li>
 <li><NavLink to='/browseTutions'>Tutions </NavLink></li>
-<li><NavLink> Tutors </NavLink></li>
+{/* <li><NavLink> Tutors </NavLink></li> */}
 
 
 {
   user && <>
 <li><NavLink to='/dashboard/my-tutions'> My Tutions </NavLink></li>
-
+<li><NavLink to='/dashboard'>DashBoard</NavLink> </li>
   </>
 }
 
