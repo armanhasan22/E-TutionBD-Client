@@ -11,9 +11,9 @@ const axiosSecure= useAxiosSecure();
 
 const { data: tutions = [], refetch } = useQuery({
   queryKey: ['my-tutions', user?.email],
-  enabled: !!user?.email,
+  // enabled: !!user?.email,
   queryFn: async () => {
-    const res = await axiosSecure.get(`/tutions/${user.email}`);
+    const res = await axiosSecure.get(`/tutions?email=${user.email}`);
     return res.data;
   }
 });
