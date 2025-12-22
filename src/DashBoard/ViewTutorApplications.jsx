@@ -326,7 +326,7 @@ const ViewTutorApplications = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:9000/applications/tuition/${tuitionId}`)
+    axios.get(`https://e-tution-bd-server-yr7n.vercel.app/applications/tuition/${tuitionId}`)
       .then(res => {
         setTutors(res.data); // set tutors from backend
         setLoading(false);

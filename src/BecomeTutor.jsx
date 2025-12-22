@@ -353,7 +353,7 @@ const BecomeTutor = () => {
   useEffect(() => {
     if (user?._id) {
       axios
-        .get(`http://localhost:9000/applications/tutor/${user._id}`)
+        .get(`https://e-tution-bd-server-yr7n.vercel.app/applications/tutor/${user._id}`)
         .then(res => {
           if (res.data.length > 0) {
             setTutorDetails(res.data[res.data.length - 1]);

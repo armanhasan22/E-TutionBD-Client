@@ -11,7 +11,7 @@ const TuitionDetails = ({ tutor }) => {
   // Fetch tuition details
   useEffect(() => {
     axios
-      .get(`http://localhost:9000/tuitions/${tuitionId}`)
+      .get(`https://e-tution-bd-server-yr7n.vercel.app/tuitions/${tuitionId}`)
       .then(res => setTuition(res.data))
       .catch(err => console.log(err));
   }, [tuitionId]);

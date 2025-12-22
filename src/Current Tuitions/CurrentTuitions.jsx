@@ -172,7 +172,7 @@ const CurrentTuitions = () => {
   const { data: tutions = [] } = useQuery({
     queryKey: ['current-tutions'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:9000/current-tutions');
+      const res = await axios.get('https://e-tution-bd-server-yr7n.vercel.app/current-tutions');
       return res.data;
     }
   });
@@ -181,7 +181,7 @@ const CurrentTuitions = () => {
 
   const handleApply = async (tuitionId) => { // ✅ name matches everywhere
     try {
-      const res = await axios.post(`http://localhost:9000/applications`, {
+      const res = await axios.post(`https://e-tution-bd-server-yr7n.vercel.app/applications`, {
         tuitionId: tuitionId // ✅ use parameter
       });
 
