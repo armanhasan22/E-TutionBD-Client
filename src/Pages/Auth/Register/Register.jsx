@@ -110,6 +110,159 @@
 // };
 
 // export default Register;
+
+// real
+
+// import React from 'react';
+// import { Link, useNavigate, useLocation } from 'react-router';
+// import { useForm } from 'react-hook-form';
+// import SocialLogin from '../SocialLogin/SocialLogin';
+// import useAuth from '../../../hooks/useAuth';
+// import axios from 'axios';
+// import useAxiosSecure from '../../../hooks/useAxiosSecure';
+
+// const Register = () => {
+
+//   const { register, handleSubmit, formState: { errors } } = useForm();
+
+//   // ✅ FIX: include updateUserProfile
+//   const { registerUser, updateUserProfile } = useAuth();
+
+//   const navigate = useNavigate();
+//   const location = useLocation();
+//   const axiosSecure=useAxiosSecure();
+
+//   const handleRegistration = (data) => {
+//     const profileImg = data.photo[0];
+//     console.log('after register', data);
+
+//     registerUser(data.email, data.password)
+//       .then(result => {
+
+//         const image_API_URL = `https://api.imgbb.com/1/upload?&key=${import.meta.env.VITE_image_host_key}`;
+
+//         // store image in form data
+//         const formData = new FormData();
+//         formData.append('image', profileImg);
+
+//           axios.post(image_API_URL, formData)
+//                     .then(res => {
+//                         const photoURL = res.data.data.url;
+
+//                         // create user in the database
+//                         const userInfo = {
+//                             email: data.email,
+//                             displayName: data.name,
+//                             photoURL: photoURL
+//                         };
+//                         axiosSecure.post('/users', userInfo)
+//                             .then(res => {
+//                                 if (res.data.insertedId) {
+//                                     console.log('user created in the database');
+//                                 }
+//                             })
+
+//             updateUserProfile(updateUserProfile)
+//               .then(() => {
+//                 console.log('user profile updated');
+//                 navigate('/');
+//               })
+//               .catch(error => console.log(error));
+//           })
+//           .catch(error => console.log(error));
+//       })
+//       .catch(error => console.log(error));
+//   };
+
+//   return (
+//     <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+//       <h3 className="text-3xl text-center">Welcome to E-tutionBD</h3>
+//       <p className='text-center'>Please Register</p>
+
+//       <form
+//         className="card-body"
+//         onSubmit={handleSubmit(handleRegistration)}
+//       >
+//         <fieldset className="fieldset">
+
+//           {/* Name */}
+//           <label className="label">Name</label>
+//           <input
+//             type="text"
+//             {...register('name', { required: true })}
+//             className="input"
+//             placeholder="Your Name"
+//           />
+//           {errors.name && <p className='text-red-500'>Name is required.</p>}
+
+//           {/* Photo */}
+//           <label className="label">Photo</label>
+//           <input
+//             type="file"
+//             {...register('photo', { required: true })}
+//             className="file-input"
+//           />
+//           {errors.photo && <p className='text-red-500'>Photo is required.</p>}
+
+//           {/* Email */}
+//           <label className="label">Email</label>
+//           <input
+//             type="email"
+//             {...register('email', { required: true })}
+//             className="input"
+//             placeholder="Email"
+//           />
+//           {errors.email && <p className='text-red-500'>Email is required.</p>}
+
+//           {/* Password */}
+//           <label className="label">Password</label>
+//           <input
+//             type="password"
+//             {...register('password', {
+//               required: true,
+//               minLength: 6,
+//               pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/
+//             })}
+//             className="input"
+//             placeholder="Password"
+//           />
+
+//           {errors.password?.type === 'required' &&
+//             <p className='text-red-500'>Password is required.</p>
+//           }
+
+//           {errors.password?.type === 'minLength' &&
+//             <p className='text-red-500'>Password must be at least 6 characters.</p>
+//           }
+
+//           {errors.password?.type === 'pattern' &&
+//             <p className='text-red-500'>
+//               Must include uppercase, lowercase, number & special character
+//             </p>
+//           }
+
+//           <button className="btn btn-neutral mt-4">Register</button>
+//         </fieldset>
+
+//         <p className="text-center">
+//           Already have an account?{' '}
+//           <Link
+//             to="/login"
+//             state={location.state}
+//             className="text-blue-400 underline"
+//           >
+//             Login
+//           </Link>
+//         </p>
+//       </form>
+
+//       <SocialLogin />
+//     </div>
+//   );
+// };
+
+// export default Register;
+
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import { useForm } from 'react-hook-form';
@@ -121,50 +274,48 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 const Register = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
-
-  // ✅ FIX: include updateUserProfile
   const { registerUser, updateUserProfile } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosSecure=useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
   const handleRegistration = (data) => {
     const profileImg = data.photo[0];
-    console.log('after register', data);
 
     registerUser(data.email, data.password)
-      .then(result => {
+      .then(() => {
 
-        const image_API_URL = `https://api.imgbb.com/1/upload?&key=${import.meta.env.VITE_image_host_key}`;
+        const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host_key}`;
 
-        // store image in form data
         const formData = new FormData();
         formData.append('image', profileImg);
 
-          axios.post(image_API_URL, formData)
-                    .then(res => {
-                        const photoURL = res.data.data.url;
+        axios.post(image_API_URL, formData)
+          .then(res => {
+            const photoURL = res.data.data.url;
 
-                        // create user in the database
-                        const userInfo = {
-                            email: data.email,
-                            displayName: data.name,
-                            photoURL: photoURL
-                        };
-                        axiosSecure.post('/users', userInfo)
-                            .then(res => {
-                                if (res.data.insertedId) {
-                                    console.log('user created in the database');
-                                }
-                            })
+            // ✅ user info with role
+            const userInfo = {
+              email: data.email,
+              displayName: data.name,
+              photoURL: photoURL,
+              role: data.role || "user",
+              createdAt: new Date()
+            };
 
-            updateUserProfile(updateUserProfile)
+            // save user in DB
+            axiosSecure.post('/users', userInfo)
               .then(() => {
-                console.log('user profile updated');
-                navigate('/');
-              })
-              .catch(error => console.log(error));
+
+                // ✅ FIXED: update profile correctly
+                updateUserProfile(data.name, photoURL)
+                  .then(() => {
+                    navigate('/');
+                  })
+                  .catch(error => console.log(error));
+
+              });
           })
           .catch(error => console.log(error));
       })
@@ -172,7 +323,7 @@ const Register = () => {
   };
 
   return (
-    <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full mx-auto max-w-sm shadow-2xl">
       <h3 className="text-3xl text-center">Welcome to E-tutionBD</h3>
       <p className='text-center'>Please Register</p>
 
@@ -190,7 +341,7 @@ const Register = () => {
             className="input"
             placeholder="Your Name"
           />
-          {errors.name && <p className='text-red-500'>Name is required.</p>}
+          {errors.name && <p className='text-red-500'>Name is required</p>}
 
           {/* Photo */}
           <label className="label">Photo</label>
@@ -199,7 +350,7 @@ const Register = () => {
             {...register('photo', { required: true })}
             className="file-input"
           />
-          {errors.photo && <p className='text-red-500'>Photo is required.</p>}
+          {errors.photo && <p className='text-red-500'>Photo is required</p>}
 
           {/* Email */}
           <label className="label">Email</label>
@@ -209,7 +360,7 @@ const Register = () => {
             className="input"
             placeholder="Email"
           />
-          {errors.email && <p className='text-red-500'>Email is required.</p>}
+          {errors.email && <p className='text-red-500'>Email is required</p>}
 
           {/* Password */}
           <label className="label">Password</label>
@@ -225,18 +376,39 @@ const Register = () => {
           />
 
           {errors.password?.type === 'required' &&
-            <p className='text-red-500'>Password is required.</p>
+            <p className='text-red-500'>Password is required</p>
           }
-
           {errors.password?.type === 'minLength' &&
-            <p className='text-red-500'>Password must be at least 6 characters.</p>
+            <p className='text-red-500'>Minimum 6 characters</p>
           }
-
           {errors.password?.type === 'pattern' &&
             <p className='text-red-500'>
-              Must include uppercase, lowercase, number & special character
+              Must include upper, lower, number & special character
             </p>
           }
+
+          {/* ✅ Register As */}
+          <label className="label mt-3 font-semibold text-center">Register As</label>
+          <div className="flex gap-6">
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                value="user"
+                {...register("role")}
+                defaultChecked
+              />
+              User
+            </label>
+
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                value="tutor"
+                {...register("role")}
+              />
+              Tutor
+            </label>
+          </div>
 
           <button className="btn btn-neutral mt-4">Register</button>
         </fieldset>
@@ -259,3 +431,6 @@ const Register = () => {
 };
 
 export default Register;
+
+
+

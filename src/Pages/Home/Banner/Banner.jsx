@@ -126,7 +126,7 @@ const Banner = () => {
 
           <div className="flex gap-4 flex-wrap">
             <Link
-              to="/browseTutions"
+              to="/current-tutions"
               className="btn bg-white text-teal-600 hover:bg-gray-100"
             >
               Explore Tuitions

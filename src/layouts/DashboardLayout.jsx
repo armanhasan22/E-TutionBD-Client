@@ -55,8 +55,17 @@ import { BsBookFill } from 'react-icons/bs';
 import { NavLink } from 'react-router';
 import { Link } from 'react-router';
 import { Outlet } from 'react-router';
+import useRole from '../hooks/UseRole';
+import TutorDashboard from '../DashBoard/TutorDashboard/TutorDashboard';
+import StudentDashboard from '../DashBoard/Student-DashBoard/StudentDashboard';
+import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
+import { GiTeacher } from 'react-icons/gi';
+
 
 const DashboardLayout = () => {
+    
+const {role}= useRole()
+
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -98,15 +107,102 @@ const DashboardLayout = () => {
                         
 {/* our dashboard links */}
 
-<li> 
+
+{/* <li> 
+    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="StudentDashBoard"
+    to="/dashboard/StudentDashboard" >
+       <BsBookFill />
+        <span className="is-drawer-close:hidden font-bold text-blue-950 ">Student DashBoard</span>
+     
+        </NavLink>
+    
+  
+</li> */}
+
+
+{/* <li>
+    {
+    role ==='user' && <> 
+
+    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Browse Tution"
+    to="/dashboard/browseTutions" >
+       <BsBookFill />
+        <span className="is-drawer-close:hidden font-bold text-blue-950 ">Browse Tution </span>
+     
+        </NavLink>
+    
     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyTutions"
     to="/dashboard/my-tutions" >
        <BsBookFill />
         <span className="is-drawer-close:hidden font-bold text-blue-950 ">My Tutions</span>
      
         </NavLink>
+    
+  <StudentDashboard></StudentDashboard>
+
+    
   
+
+
+  
+    
+    
+    
+    </>
+}
+
 </li>
+<li>
+{
+    role ==='tutor' && <>
+    <li>
+<TutorDashboard></TutorDashboard>
+
+    </li>
+    
+    
+    
+    </>
+}
+
+</li> */}
+<li>
+
+    {role === 'user' && <>
+   
+     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Browse Tution"
+    to="/dashboard/browseTutions" >
+       <BsBookFill />
+        <span className="is-drawer-close:hidden font-bold text-blue-950 ">Browse Tution </span>
+     
+        </NavLink>
+    
+    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyTutions"
+    to="/dashboard/my-tutions" >
+<GiTeacher />
+
+
+        <span className="is-drawer-close:hidden font-bold text-blue-950 ">My Tutions</span>
+     
+        </NavLink>
+    {/* <StudentDashboard /> */}
+</>}
+
+{role === "tutor" && (
+  <>
+    <li>
+      <Link to="/dashboard/tutor-dashboard">Tutor Dashboard</Link>
+    </li>
+  </>
+)}
+
+
+</li>
+
+
+
+
+
                     </ul>
                 </div>
             </div>

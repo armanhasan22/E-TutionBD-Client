@@ -9,6 +9,14 @@ import BrowseTutions from "../BrowseTutions/BrowseTutions";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyTutions from "../DashBoard/MyTutions/MyTutions";
 import CurrentTuitions from "../Current Tuitions/CurrentTuitions";
+import ViewTutorApplications from "../DashBoard/ViewTutorApplications";
+import TutionDetails from "../Pages/TutionDetails";
+import BecomeTutor from "../BecomeTutor";
+import StudentDashboard from "../DashBoard/Student-DashBoard/StudentDashboard";
+import TutorDashboard from "../DashBoard/TutorDashboard/TutorDashboard";
+import Unauthorized from "../Pages/Unauthorized";
+import TutorRoute from "./TutorRoute";
+import Tutor from "../Tutor/Tutor";
 
 export const router = createBrowserRouter([
   {
@@ -32,10 +40,27 @@ Component:Login
    {
     path:'register',
     Component:Register
-   }
+   },
+      { path: "unauthorized",
+         element: <Unauthorized /> }
 ]
   },
-  {
+
+  
+{
+  path: 'dashboard',
+  element: (
+    <PrivateRoute>
+      <DashboardLayout />
+    </PrivateRoute>
+  ),
+  children: [
+    {
+      path: 'my-tutions',
+      element: <MyTutions />
+
+    },
+      {
    path:'browseTutions',
    element:<PrivateRoute><BrowseTutions></BrowseTutions></PrivateRoute>,
    // loader:()=> fetch('/public/Cities.json')
@@ -51,44 +76,46 @@ Component:Login
   }
 
   },
-  
-
-
-
-
-
-//   {
-//    path:'dashboard',
-//    element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-//    children:[
-//       {
-//          path:'my-tutions',
-//          Component:MyTutions
-//       },
-
-
-
-
-//    ]
-//   },
-{
-  path: 'dashboard',
-  element: (
-    <PrivateRoute>
-      <DashboardLayout />
-    </PrivateRoute>
-  ),
-  children: [
     {
-      path: 'my-tutions',
-      element: <MyTutions />
-    }
+path: 'StudentDashboard',
+element:<StudentDashboard>
+  
+</StudentDashboard>
+    },
+
+// {
+// path:'TutorDashboard',
+// element:<TutorDashboard></TutorDashboard>
+// },
+
+    {
+path: 'tutor-applications/:tuitionId',
+element:<ViewTutorApplications></ViewTutorApplications>
+    },
+   
+
   ]
 },
 
+{
+  path: "tutor-dashboard",
+  element: (
+    <TutorRoute>
+      <Tutor />
+    </TutorRoute>
+  )
+},
   {
    path:'current-tutions',
    Component:CurrentTuitions
+  },
+  {
+path:'tution/:tutionId',
+element: <PrivateRoute><TutionDetails></TutionDetails></PrivateRoute>
+  },
+  {
+  path: "/become-tutor",
+  element: <PrivateRoute><BecomeTutor /></PrivateRoute>  
   }
 
 ]);

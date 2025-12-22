@@ -3,6 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router';
 
 const MyTutions = () => {
 
@@ -95,6 +96,9 @@ const handleTutionDelete = (id) => {
           <span className="px-4 py-2 rounded-full bg-green-100 text-green-700 font-semibold">
             ৳ {tution.budget}/month
           </span>
+          <Link to={`/dashboard/tutor-applications/${tution._id}`}>
+  View Tutor Applications
+</Link>
 
           <button
             onClick={() => handleTutionDelete(tution._id)}

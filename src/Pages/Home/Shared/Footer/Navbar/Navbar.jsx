@@ -2,8 +2,11 @@ import React from 'react';
 import { Link, NavLink } from 'react-router';
 import Logo from '../../../../../Components/Logo/Logo';
 import useAuth from '../../../../../hooks/useAuth';
+import useRole from '../../../../../hooks/UseRole';
+import TutorRoute from '../../../../../Routes/TutorRoute';
 
 const Navbar = () => {
+  const {role}= useRole();
 
 
 
@@ -20,21 +23,35 @@ const Navbar = () => {
 const links =<>
 
 <li><NavLink to="">Home</NavLink></li>
-<li><NavLink>Service </NavLink></li>
+{/* <li><NavLink>Service </NavLink></li> */}
 <li><NavLink to='current-tutions'>Current Tuitions </NavLink></li>
-<li><NavLink to='/browseTutions'>Tutions </NavLink></li>
-{/* <li><NavLink> Tutors </NavLink></li> */}
 
 
+
+{/* 
 {
-  user && <>
+ role ==='user' && <>
 <li><NavLink to='/dashboard/my-tutions'> My Tutions </NavLink></li>
-<li><NavLink to='/dashboard'>DashBoard</NavLink> </li>
+<li><NavLink to='/dashboard/browseTutions'> Post Tutions </NavLink></li>
   </>
 }
+{
+  role==='tutor' && <>
+<li> <NavLink to='become-tutor'>Become Tutor</NavLink> </li>
+</>
+} */}
+
+{user && role === 'user' && <>
+  <li><NavLink to='/dashboard/my-tutions'> My Tutions </NavLink></li>
+  <li><NavLink to='/dashboard/browseTutions'> Post Tutions </NavLink></li>
+</>}
+
+{user && role === 'tutor' && <>
+  <li><NavLink to='/become-tutor'>Become Tutor</NavLink></li>
+</>}
+
 
 </>
-
 
 
     return (
@@ -76,4 +93,3 @@ const links =<>
 };
 
 export default Navbar;
-250
